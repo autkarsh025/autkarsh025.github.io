@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects | Utkarsh Agarwal</title>
+<meta name="description" content="Gigawatt Ledger, Sundown and other projects by Utkarsh Agarwal, with live data and code.">
+<meta property="og:title" content="Projects | Utkarsh Agarwal">
+<meta property="og:description" content="Gigawatt Ledger, Sundown and other projects by Utkarsh Agarwal, with live data and code.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e1013" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2315171b'/%3E%3Cpolyline points='6,22 11,19 15,21 20,13 26,9' fill='none' stroke='%23ffffff' stroke-width='2.6' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<style>
+:root{
+  --bg:#ffffff;--ink:#15171b;--sec:#585e67;--mute:#8a9098;--rule:#e6e8eb;--panel:#f7f8fa;--panel2:#f0f2f5;
+  --accent:#2a4fd6;--bar:#cdd6f6;--ok:#1f8a4c;--kw:#2a4fd6;--str:#2c7a4b;--num:#b4561b;--com:#8a9098;
+  --sans:"Schibsted Grotesk",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+:root[data-theme=dark]{--bg:#0e1013;--ink:#e8eaee;--sec:#a4aab3;--mute:#737983;--rule:#23272e;--panel:#14171c;--panel2:#1a1e24;--accent:#8ea5ff;--bar:#2c3a68;--ok:#4cc27e;--kw:#8ea5ff;--str:#7fd1a0;--num:#f0a46b;--com:#6d737d}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e1013;--ink:#e8eaee;--sec:#a4aab3;--mute:#737983;--rule:#23272e;--panel:#14171c;--panel2:#1a1e24;--accent:#8ea5ff;--bar:#2c3a68;--ok:#4cc27e;--kw:#8ea5ff;--str:#7fd1a0;--num:#f0a46b;--com:#6d737d}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16.5px/1.62 var(--sans);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;text-rendering:optimizeLegibility}
+::selection{background:color-mix(in srgb,var(--accent) 22%,transparent)}
+a{color:inherit;text-decoration:underline;text-decoration-color:var(--rule);text-decoration-thickness:1.5px;text-underline-offset:3px;transition:text-decoration-color .15s,color .15s}
+a:hover{text-decoration-color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 32px}
+
+header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+header.top.scrolled{border-bottom-color:var(--rule)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.top .me{font-weight:650;text-decoration:none;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.top .me svg{width:22px;height:22px;display:block;color:var(--ink)}
+.top nav{display:flex;gap:26px;align-items:center;font-size:15px}
+.top nav a{text-decoration:none;color:var(--sec);position:relative}
+.top nav a:hover,.top nav a[aria-current=page]{color:var(--ink)}
+.top nav a[aria-current=page]::after{content:"";position:absolute;left:0;right:0;bottom:-21px;height:2px;background:var(--ink)}
+#theme{font:inherit;font-size:14px;color:var(--sec);background:none;border:1px solid var(--rule);border-radius:7px;padding:3px 11px;cursor:pointer}
+#theme:hover{color:var(--ink);border-color:var(--mute)}
+
+h1{font-size:clamp(44px,7.4vw,78px);line-height:.98;letter-spacing:-.045em;font-weight:720;margin:0}
+.lede{font-size:21px;line-height:1.5;color:var(--sec);max-width:31em;margin:22px 0 0;letter-spacing:-.005em}
+.lede b{color:var(--ink);font-weight:550}
+.hero,.phead{padding:88px 0 0}
+.contact{display:flex;gap:22px;margin-top:22px;font-size:15.5px}
+.trace{display:block;width:100%;height:170px;margin-top:64px;overflow:visible}
+.trace .line{fill:none;stroke:var(--accent);stroke-width:2;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.trace .tl,.chart .zl{stroke:var(--rule);stroke-width:1;vector-effect:non-scaling-stroke}
+svg .tk{fill:var(--mute);font:12px var(--sans)}
+@media (prefers-reduced-motion:no-preference){.trace .line{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.2s cubic-bezier(.4,0,.2,1) .25s forwards}}
+@keyframes draw{to{stroke-dashoffset:0}}
+.tcap{display:flex;justify-content:space-between;gap:24px;font-size:14px;color:var(--sec);margin-top:10px}
+.tcap b{color:var(--ink);font-weight:600}
+.status{width:100%;border-collapse:collapse;margin-top:36px;font:14px/1.4 var(--mono);color:var(--sec);border-top:1px solid var(--rule)}
+.status th,.status td{text-align:left;padding:11px 18px 11px 0;border-bottom:1px solid var(--rule);font-weight:400;white-space:nowrap}
+.status th{color:var(--ink);font-weight:500;width:200px}
+.status th a{text-decoration:none}.status th a:hover{text-decoration:underline}
+.status td:last-child{white-space:normal;width:100%}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--mute);margin-right:9px;vertical-align:1px}
+.dot.ok{background:var(--ok);box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 22%,transparent)}
+
+section{display:grid;grid-template-columns:200px 1fr;gap:0 36px;margin-top:104px}
+section>h2{font-size:15px;font-weight:600;color:var(--sec);margin:4px 0 0;letter-spacing:0;position:sticky;top:88px;align-self:start}
+.about p,.prose p{font-size:19px;line-height:1.6;margin:0 0 16px;max-width:34em;letter-spacing:-.005em}
+.about p:last-child,.prose p:last-child{margin-bottom:0}
+p.more{font-size:16px;font-weight:550;margin-top:22px}
+
+.selected{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.sel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr) 60px;gap:24px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--rule);text-decoration:none}
+.sel .sn{font-size:20px;font-weight:650;letter-spacing:-.02em;text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:4px;transition:text-decoration-color .15s}
+.sel .sd{color:var(--sec)}.sel .sy{color:var(--mute);text-align:right;font-size:14px}
+.sel:hover .sn{text-decoration-color:var(--accent)}
+
+.list{list-style:none;padding:0;margin:0}
+.row{display:grid;grid-template-columns:1fr 170px;gap:24px;padding:0 0 26px;margin-bottom:26px;border-bottom:1px solid var(--rule)}
+.row:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.row .when{order:2;text-align:right;font-size:14px;color:var(--mute);padding-top:3px}
+.row h3{font-size:18px;font-weight:620;letter-spacing:-.012em;margin:0;line-height:1.35}
+.row .org{color:var(--sec);margin:1px 0 8px}
+.row p{margin:0;max-width:38em}
+.skills{margin:0}
+.skills div{display:grid;grid-template-columns:170px 1fr;gap:24px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.skills div:first-child{padding-top:0}.skills div:last-child{border-bottom:0}
+.skills dt{font-weight:600}.skills dd{margin:0;color:var(--sec)}
+
+.index{width:100%;border-collapse:collapse;margin-top:64px;font-size:15px}
+.index th{text-align:left;font-weight:500;color:var(--mute);font-size:13.5px;padding:0 16px 10px 0;border-bottom:1px solid var(--rule)}
+.index td{padding:14px 16px 14px 0;border-bottom:1px solid var(--rule);vertical-align:baseline}
+.index .y{color:var(--mute);width:64px}
+.index .n{font-weight:620;white-space:nowrap}.index .n a{text-decoration:none}.index .n a:hover{text-decoration:underline;text-decoration-color:var(--accent)}
+.index td.d{color:var(--sec)}.index td.s{color:var(--mute);white-space:nowrap}
+.index .l{text-align:right;padding-right:0;font-weight:550}
+
+.case{display:grid;grid-template-columns:200px minmax(0,1fr);gap:0 36px;margin-top:120px;scroll-margin-top:80px}
+.case .meta{position:sticky;top:88px;align-self:start;font-size:14.5px}
+.case .yr{margin:8px 0 18px;color:var(--mute)}
+.case .meta dl{margin:0}.case .meta dt{color:var(--mute);font-size:13px;margin-top:12px}.case .meta dd{margin:2px 0 0;color:var(--sec)}
+.case .go{display:flex;flex-direction:column;gap:6px;margin-top:22px;font-weight:550}
+.case h2{font-size:42px;line-height:1.05;letter-spacing:-.035em;font-weight:700;margin:0}
+.case .sub{font-size:19px;color:var(--sec);margin:8px 0 20px}
+.case .main>p{margin:0 0 14px;max-width:38em}
+
+.win{margin:32px 0 8px;border:1px solid var(--rule);border-radius:12px;background:var(--panel);overflow:hidden}
+.win .bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:0 16px 0 6px;border-bottom:1px solid var(--rule);background:var(--panel2)}
+.win [role=tablist]{display:flex;overflow-x:auto;scrollbar-width:none}
+.win [role=tab]{font:500 14px var(--sans);color:var(--sec);background:none;border:0;padding:12px 12px;cursor:pointer;position:relative;white-space:nowrap}
+.win [role=tab]:hover,.win [role=tab][aria-selected=true]{color:var(--ink)}
+.win [role=tab][aria-selected=true]::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:2px;background:var(--accent);border-radius:2px}
+.win .bar .meta{font:12.5px var(--mono);color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.win .body{padding:24px 26px;min-height:268px}
+@media (prefers-reduced-motion:no-preference){.win [role=tabpanel]{animation:fade .2s ease}}
+@keyframes fade{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+.live{margin:0}.live svg{width:100%;height:196px;display:block;overflow:visible}
+.chart .b{fill:var(--bar)}.chart .hi{fill:var(--accent)}
+.chart rect{transition:opacity .12s;cursor:crosshair}.chart:hover rect{opacity:.5}.chart rect:hover{opacity:1}
+.live figcaption{margin-top:16px;font:13px var(--mono);color:var(--sec);min-height:1.4em}
+.code{margin:0;font:13px/1.7 var(--mono);color:var(--ink);overflow-x:auto;white-space:pre;tab-size:4}
+.hc{color:var(--com);font-style:italic}.hs{color:var(--str)}.hn{color:var(--num)}.hk{color:var(--kw);font-weight:500}
+.ask .q{margin:0 0 16px;font-weight:620;font-size:17px;letter-spacing:-.01em}
+.asof{display:flex;align-items:center;gap:6px;margin:0 0 18px;font-size:13.5px;color:var(--mute)}
+.asof span{margin-right:6px}
+.asof button{font:500 13px var(--mono);color:var(--sec);background:var(--bg);border:1px solid var(--rule);border-radius:6px;padding:4px 9px;cursor:pointer;transition:background .15s,color .15s}
+.asof button[aria-checked=true]{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.ask .a{border-left:2px solid var(--accent);padding-left:16px;font-size:15.5px}
+.ask .a p{margin:0 0 10px}.ask .a ul{margin:0 0 10px;padding-left:18px}.ask .a li{margin:3px 0}
+.ask .note{font-size:13.5px;color:var(--mute);margin:16px 0 0;max-width:44em}
+table.ans{border-collapse:collapse;margin:6px 0 12px;font-size:14.5px}
+table.ans th,table.ans td{padding:4px 22px 4px 0;border-bottom:1px solid var(--rule);text-align:left}
+table.ans th{font-weight:550;color:var(--sec)}
+
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:28px 0 0}
+.nums div{border-top:2px solid var(--ink);padding-top:10px}
+.nums dt{font-size:13.5px;color:var(--sec);line-height:1.35}
+.nums dd{margin:4px 0 0;font-size:28px;font-weight:680;letter-spacing:-.03em;line-height:1.1;white-space:nowrap}
+.nums small{display:block;font-size:13px;font-weight:450;color:var(--sec);letter-spacing:0;margin-top:3px}
+.photo{margin:28px 0 0}.photo img{width:100%;display:block;border-radius:12px}
+.slot{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:1.5px dashed var(--rule);border-radius:12px;color:var(--mute);font-size:14px;text-align:center;padding:20px}
+.slot.banner{aspect-ratio:16/7;margin-top:28px}.slot small{font:12px var(--mono)}
+
+.gallery{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:118px;gap:12px;margin-top:56px}
+.ph{margin:0;position:relative;border-radius:12px;overflow:hidden;background:var(--panel)}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph figcaption{position:absolute;left:12px;bottom:10px;font-size:12.5px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.55)}
+.ph.tall{grid-column:span 2;grid-row:span 3}.ph.wide{grid-column:span 4;grid-row:span 2}.ph.square{grid-column:span 2;grid-row:span 1}
+.ph.slot{background:none}
+.now{list-style:none;margin:0;padding:0}
+.now li{font-size:18px;padding:12px 0;border-bottom:1px solid var(--rule);max-width:36em}
+.now li:first-child{padding-top:0}.now li:last-child{border-bottom:0}
+.now b{font-weight:620;display:inline-block;min-width:88px}
+.fills{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fill{border:1.5px dashed var(--rule);border-radius:12px;padding:16px 18px}
+.fill h3{margin:0 0 4px;font-size:16px}.fill p{margin:0;color:var(--mute);font-size:14.5px}
+
+footer{margin:128px 0 0;padding:28px 0 48px;border-top:1px solid var(--rule)}
+footer .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;font-size:14.5px;color:var(--sec)}
+footer .say{font-size:28px;letter-spacing:-.03em;font-weight:680;color:var(--ink);margin:0 0 10px}
+footer .say a{text-decoration-color:var(--accent)}
+footer p{margin:0}
+
+@media (max-width:860px){
+  .wrap{padding:0 22px}
+  .top .me span{display:none}
+  .top nav{gap:18px}
+  .hero,.phead{padding-top:56px}.lede{font-size:18.5px}
+  .trace{height:120px;margin-top:44px}.trace .tk{display:none}
+  section,.case{grid-template-columns:1fr;margin-top:76px}
+  section>h2{position:static;margin-bottom:18px}
+  .case .meta{position:static;order:2;margin-top:28px;padding-top:18px;border-top:1px solid var(--rule)}
+  .case .meta .yr{margin:0 0 4px}
+  .case .meta dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px}.case .meta dt,.case .meta dd{margin:0}
+  .case .go{flex-direction:row;gap:20px;margin-top:16px}
+  .live .tk{display:none}
+  .case h2{font-size:32px}
+  .row{grid-template-columns:1fr;gap:2px}.row .when{order:0;text-align:left}
+  .skills div{grid-template-columns:1fr;gap:2px}
+  .status th{width:auto}.status td:last-child{display:none}
+  .tcap{flex-direction:column;gap:2px}
+  .sel{grid-template-columns:1fr auto;gap:2px 12px}.sel .sd{grid-column:1/-1;grid-row:2}
+  .index th.d,.index th.s,.index td.d,.index td.s{display:none}
+  .win .bar .meta{display:none}.win .body{padding:18px 16px;min-height:0}.live svg{height:150px}
+  .nums{grid-template-columns:1fr 1fr}
+  .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:110px}
+  .ph.tall{grid-column:span 1;grid-row:span 2}.ph.wide{grid-column:span 2;grid-row:span 2}.ph.square{grid-column:span 1}
+  .fills{grid-template-columns:1fr}
+}
+@media print{header.top,#theme{display:none}.trace .line{animation:none;stroke-dasharray:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="me" href="/" aria-label="Utkarsh Agarwal, home"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="currentColor"/><polyline points="6,22 11,19 15,21 20,13 26,9" fill="none" stroke="var(--bg)" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Utkarsh Agarwal</span></a>
+  <nav><a href="/projects/" aria-current="page">Projects</a><a href="/about/">About</a><a href="mailto:autkarsh@berkeley.edu">Contact</a><button id="theme" type="button">Dark</button></nav>
+</div></header>
+<main class="wrap">
+  <div class="phead">
+    <h1>Projects</h1>
+    <p class="lede">Things I&rsquo;ve built. The two data projects run every day on their own. Each one below has its live data, real output from the system and a piece of its code.</p>
+  </div>
+  <table class="index"><thead><tr><th>Year</th><th>Project</th><th class="d">What</th><th class="s">Built with</th><th></th></tr></thead><tbody><tr><td class="y">2026</td><td class="n"><a href="#gigawatt-ledger">Gigawatt Ledger</a></td><td class="d">AI spending from big tech to the power grid, with an AI analyst</td><td class="s">Python, SQL, Claude API</td><td class="l"><a href="/gigawatt-ledger/">Live</a></td></tr><tr><td class="y">2026</td><td class="n"><a href="#sundown">Sundown</a></td><td class="d">How batteries carry U.S. grids after sunset</td><td class="s">Python, SQL, Airflow, Spark</td><td class="l"><a href="/sundown/">Live</a></td></tr><tr><td class="y">2026</td><td class="n"><a href="#bmw">BMW engine and electronics tuning</a></td><td class="d">125 calibration parameters, 6 control modules</td><td class="s">C, Python</td><td class="l"></td></tr><tr><td class="y">2025</td><td class="n"><a href="/#experience">Campus energy research</a></td><td class="d">Dorm energy and shuttle ridership at UW–Madison</td><td class="s">Python</td><td class="l"></td></tr><tr><td class="y">2023</td><td class="n"><a href="/#experience">Donation web app</a></td><td class="d">Full-stack app for Seaside Sustainability</td><td class="s">Python, Node.js</td><td class="l"></td></tr></tbody></table>
+  
+    <article class="case" id="gigawatt-ledger">
+      <aside class="meta">
+        <p class="yr">2026 – now</p>
+        <dl><dt>Role</dt><dd>Solo project</dd><dt>Built with</dt><dd>Python, SQL, Claude API, RAG, MCP, eval harness, GitHub Actions</dd></dl>
+        <p class="go"><a href="/gigawatt-ledger/">Open the dashboard</a><a href="/gigawatt-ledger/data/README.md">Open dataset</a></p>
+      </aside>
+      <div class="main">
+        <h2>Gigawatt Ledger</h2>
+        <p class="sub">Tracks AI spending from big tech&rsquo;s filings to the power grid</p>
+        <p>A daily pipeline joins SEC filings from 26 companies across the AI supply chain (cloud buyers, chips, servers,
+        power equipment, data-center landlords and utilities) with hourly electricity demand in five data-center regions,
+        weather removed. Every number keeps the date it became public, so any past day can be replayed without hindsight.</p>
+        <p>An AI analyst answers questions from the data and 4,600+ filing passages through 16 tools. Code checks every
+        number it writes before you see it, and an eval suite of 22 cases, prompt injection included, runs it end to end.</p>
+        <div class="win" data-win><div class="bar"><div role="tablist" aria-label="Snippets"><button role="tab" id="gl-t0" aria-controls="gl-p0" aria-selected="true" tabindex="0">Chart</button><button role="tab" id="gl-t1" aria-controls="gl-p1" aria-selected="false" tabindex="-1">Time travel</button><button role="tab" id="gl-t2" aria-controls="gl-p2" aria-selected="false" tabindex="-1">Multi-step</button><button role="tab" id="gl-t3" aria-controls="gl-p3" aria-selected="false" tabindex="-1">Code</button></div><span class="meta">live, from the project&#x27;s open dataset</span></div><div class="body"><div role="tabpanel" id="gl-p0" aria-labelledby="gl-t0"  data-meta="live, from the project&#x27;s open dataset"><figure class="live"><svg class="chart" viewBox="0 0 640 170" preserveAspectRatio="none" role="img" aria-label="Big tech capital spending per quarter, rising to $202 billion"><rect x="1.00" y="139.8" width="18.65" height="10.2" class="b" data-tip="2019 Q1: $14.3B"/><rect x="21.65" y="137.6" width="18.65" height="12.4" class="b" data-tip="2019 Q2: $17.4B"/><rect x="42.29" y="136.9" width="18.65" height="13.1" class="b" data-tip="2019 Q3: $18.3B"/><rect x="62.94" y="136.4" width="18.65" height="13.6" class="b" data-tip="2019 Q4: $19.0B"/><rect x="83.58" y="135.6" width="18.65" height="14.4" class="b" data-tip="2020 Q1: $20.1B"/><rect x="104.23" y="135.1" width="18.65" height="14.9" class="b" data-tip="2020 Q2: $20.8B"/><rect x="124.87" y="132.1" width="18.65" height="17.9" class="b" data-tip="2020 Q3: $25.1B"/><rect x="145.52" y="129.2" width="18.65" height="20.8" class="b" data-tip="2020 Q4: $29.1B"/><rect x="166.16" y="130.4" width="18.65" height="19.6" class="b" data-tip="2021 Q1: $27.4B"/><rect x="186.81" y="127.9" width="18.65" height="22.1" class="b" data-tip="2021 Q2: $30.9B"/><rect x="207.45" y="126.6" width="18.65" height="23.4" class="b" data-tip="2021 Q3: $32.7B"/><rect x="228.10" y="123.9" width="18.65" height="26.1" class="b" data-tip="2021 Q4: $36.6B"/><rect x="248.74" y="124.6" width="18.65" height="25.4" class="b" data-tip="2022 Q1: $35.5B"/><rect x="269.39" y="123.6" width="18.65" height="26.4" class="b" data-tip="2022 Q2: $37.0B"/><rect x="290.03" y="121.9" width="18.65" height="28.1" class="b" data-tip="2022 Q3: $39.3B"/><rect x="310.68" y="121.8" width="18.65" height="28.2" class="b" data-tip="2022 Q4: $39.5B"/><rect x="331.32" y="125.8" width="18.65" height="24.2" class="b" data-tip="2023 Q1: $33.9B"/><rect x="351.97" y="126.1" width="18.65" height="23.9" class="b" data-tip="2023 Q2: $33.4B"/><rect x="372.61" y="123.6" width="18.65" height="26.4" class="b" data-tip="2023 Q3: $36.9B"/><rect x="393.26" y="119.3" width="18.65" height="30.7" class="b" data-tip="2023 Q4: $42.9B"/><rect x="413.90" y="118.4" width="18.65" height="31.6" class="b" data-tip="2024 Q1: $44.3B"/><rect x="434.55" y="112.2" width="18.65" height="37.8" class="b" data-tip="2024 Q2: $52.9B"/><rect x="455.19" y="108.0" width="18.65" height="42.0" class="b" data-tip="2024 Q3: $58.9B"/><rect x="475.84" y="98.3" width="18.65" height="51.7" class="b" data-tip="2024 Q4: $72.3B"/><rect x="496.48" y="98.6" width="18.65" height="51.4" class="b" data-tip="2025 Q1: $71.9B"/><rect x="517.13" y="87.0" width="18.65" height="63.0" class="b" data-tip="2025 Q2: $88.2B"/><rect x="537.77" y="80.5" width="18.65" height="69.5" class="b" data-tip="2025 Q3: $97.3B"/><rect x="558.42" y="65.3" width="18.65" height="84.7" class="b" data-tip="2025 Q4: $118.6B"/><rect x="579.06" y="57.3" width="18.65" height="92.7" class="b" data-tip="2026 Q1: $129.8B"/><rect x="599.71" y="32.1" width="18.65" height="117.9" class="b" data-tip="2026 Q2: $165.1B"/><rect x="620.35" y="5.8" width="18.65" height="144.2" class="hi" data-tip="2026 Q3: $201.9B"/><text x="0.0" y="166" class="tk">2019</text><text x="165.2" y="166" class="tk">2021</text><text x="330.3" y="166" class="tk">2023</text><text x="495.5" y="166" class="tk">2025</text></svg><figcaption><span data-tipout>Big tech capex per quarter, 2019 to 2026 Q3. Hover a bar.</span></figcaption></figure></div><div role="tabpanel" id="gl-p1" aria-labelledby="gl-t1" hidden data-meta="AI analyst, point-in-time data"><div class="ask"><p class="q">What is NVIDIA&#x27;s most recent quarterly revenue and its year-over-year growth?</p><div class="asof" role="radiogroup" aria-label="Ask as of"><span>Ask as of</span><button role="radio" aria-checked="true" data-asof="0">2025-05-27</button><button role="radio" aria-checked="false" data-asof="1">2025-08-26</button></div><div class="a" data-ans="0"><p>NVIDIA&#x27;s most recent reported quarter in the data is <b>2024Q4</b>, with revenue of <b>$39.33B</b>, up <b>77.9% year over year</b>.</p><ul><li>Growth has slowed each quarter, though it is still high. It was 122.4% in 2024Q2 ($30.04B) and 93.6% in 2024Q3 ($35.08B).</li><li>Calendar 2025Q1 has no NVIDIA revenue figure as of today (2025-05-27), so 2024Q4 is the latest available.</li><li>Hyperscaler capex for 2025Q1 is already public at $71.9B, up 62.3% year over year. That is a demand signal, not NVIDIA&#x27;s own result.</li></ul></div><div class="a" data-ans="1" hidden><p>NVIDIA&#x27;s most recent reported quarter in my data is <b>2025Q1</b> (calendar quarter). Revenue was <b>$44.06 billion</b>, up <b>69.2% year over year</b>.</p><p>Growth has slowed in each of the last four quarters:</p><table class="ans"><thead><tr><th>Quarter</th><th>Growth</th></tr></thead><tbody><tr><td>2024Q2</td><td>122.4%</td></tr><tr><td>2024Q3</td><td>93.6%</td></tr><tr><td>2024Q4</td><td>77.9%</td></tr><tr><td>2025Q1</td><td>69.2%</td></tr></tbody></table><p>Revenue itself kept rising each quarter, from $30.04 billion in 2024Q2 to $44.06 billion in 2025Q1. Growth is slowing partly because the year-ago comparisons are getting harder.</p></div><p class="note">Real answers from the analyst&rsquo;s eval runs. Same question, different date: it can only see what had been filed by then, so it can&rsquo;t cheat with hindsight.</p></div></div><div role="tabpanel" id="gl-p2" aria-labelledby="gl-t2" hidden data-meta="AI analyst, calculation"><div class="ask"><p class="q">In 2026Q2, how many dollars did the four hyperscalers spend on capex for every dollar of NVIDIA revenue?</p><div class="a"><p>In 2026Q2, the four hyperscalers (Microsoft, Alphabet, Amazon and Meta) spent about <b>$1.72 of capex for every $1 of NVIDIA revenue</b>.</p><ul><li>Hyperscaler capex in 2026Q2 was $165.05B.</li><li>NVIDIA revenue in 2026Q2 was $96.22B.</li><li>$165.05B ÷ $96.22B = 1.7153, which rounds to 1.72.</li></ul><p>Recent quarters for comparison:</p><ul><li>2025Q4: $118.63B ÷ $68.13B = 1.7412.</li><li>2026Q1: $129.75B ÷ $81.61B = 1.5899.</li><li>2026Q2: 1.7153.</li></ul></div><p class="note">A real answer from an eval run. Every figure in it was checked against the data before it was shown.</p></div></div><div role="tabpanel" id="gl-p3" aria-labelledby="gl-t3" hidden data-meta="ftp/verify.py"><pre class="code"><code><span class="hk">def</span> matches(value: float, unit: str, decimals: int, evidence: list[float]) -&gt; bool:
+    <span class="hk">for</span> v, f <span class="hk">in</span> _candidates(value, unit):
+        <span class="hc"># half a unit in the last shown digit (scaled into evidence units: &quot;4.9 GW&quot; = ±50 MW), or 0.5%</span>
+        tol = <span class="hk">max</span>(<span class="hn">0.5</span> * <span class="hn">10</span> ** (-decimals) * f, <span class="hk">abs</span>(v) * <span class="hn">0.005</span>)
+        <span class="hk">if</span> <span class="hk">any</span>(<span class="hk">abs</span>(v - e) &lt;= tol + <span class="hn">1e-9</span> <span class="hk">for</span> e <span class="hk">in</span> evidence):
+            <span class="hk">return</span> <span class="hk">True</span>
+    <span class="hk">return</span> <span class="hk">False</span>
+
+<span class="hk">def</span> verify(text: str, evidence: list[float]) -&gt; Report:
+    rep = Report()
+    <span class="hk">for</span> raw, value, unit, decimals <span class="hk">in</span> extract(text):
+        rep.checked.append(raw)
+        <span class="hk">if</span> <span class="hk">not</span> matches(value, unit, decimals, evidence):
+            rep.unverified.append(raw)
+    <span class="hk">return</span> rep</code></pre></div></div></div>
+        <dl class="nums">
+          <div><dt>Big tech capex, 2026 Q3</dt><dd>$201.9B<small>up 108% in a year</small></dd></div>
+          <div><dt>Always-on load added in N. Virginia since 2019</dt><dd>+4,937 MW<small>weather removed</small></dd></div>
+          <div><dt>Eval cases passed</dt><dd>22 of 22<small>three runs each</small></dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="case" id="sundown">
+      <aside class="meta">
+        <p class="yr">2026 – now</p>
+        <dl><dt>Role</dt><dd>Solo project</dd><dt>Built with</dt><dd>Python, SQL, Airflow, Spark, pytest, Plotly</dd></dl>
+        <p class="go"><a href="/sundown/">Open the dashboard</a></p>
+      </aside>
+      <div class="main">
+        <h2>Sundown</h2>
+        <p class="sub">How batteries carry U.S. grids through the evening peak</p>
+        <p>Every morning a pipeline pulls hourly data for the seven major U.S. grids into SQL with Airflow and Spark,
+        checks it, and rebuilds a live dashboard. Batteries now cover about a quarter of California&rsquo;s evening peak.</p>
+        <p>The quality checks and 59 tests caught 3 errors in the government&rsquo;s own source data. The carbon analysis
+        shows midday EV charging in California emits about 60% less CO&#8322; than overnight.</p>
+        <div class="win" data-win><div class="bar"><div role="tablist" aria-label="Snippets"><button role="tab" id="sd-t0" aria-controls="sd-p0" aria-selected="true" tabindex="0">Chart</button><button role="tab" id="sd-t1" aria-controls="sd-p1" aria-selected="false" tabindex="-1">SQL</button></div><span class="meta">California, an average day</span></div><div class="body"><div role="tabpanel" id="sd-p0" aria-labelledby="sd-t0"  data-meta="California, an average day"><figure class="live"><svg class="chart" viewBox="0 0 640 170" preserveAspectRatio="none" role="img" aria-label="California batteries charge at midday and discharge after sunset"><line x1="0" x2="640" y1="70.7" y2="70.7" class="zl"/><rect x="2.0" y="50.2" width="22.7" height="20.5" class="hi" data-tip="midnight: discharging 2.2 GW"/><rect x="28.7" y="56.4" width="22.7" height="14.2" class="hi" data-tip="1 am: discharging 1.5 GW"/><rect x="55.3" y="66.0" width="22.7" height="4.7" class="hi" data-tip="2 am: discharging 0.5 GW"/><rect x="82.0" y="70.7" width="22.7" height="1.4" class="b" data-tip="3 am: charging 0.1 GW"/><rect x="108.7" y="70.7" width="22.7" height="4.7" class="b" data-tip="4 am: charging 0.5 GW"/><rect x="135.3" y="70.7" width="22.7" height="1.8" class="b" data-tip="5 am: charging 0.2 GW"/><rect x="162.0" y="64.7" width="22.7" height="6.0" class="hi" data-tip="6 am: discharging 0.6 GW"/><rect x="188.7" y="52.2" width="22.7" height="18.5" class="hi" data-tip="7 am: discharging 1.9 GW"/><rect x="215.3" y="70.7" width="22.7" height="1.0" class="b" data-tip="8 am: charging 0.1 GW"/><rect x="242.0" y="70.7" width="22.7" height="38.4" class="b" data-tip="9 am: charging 4.0 GW"/><rect x="268.7" y="70.7" width="22.7" height="62.3" class="b" data-tip="10 am: charging 6.6 GW"/><rect x="295.3" y="70.7" width="22.7" height="70.8" class="b" data-tip="11 am: charging 7.5 GW"/><rect x="322.0" y="70.7" width="22.7" height="73.4" class="b" data-tip="noon: charging 7.7 GW"/><rect x="348.7" y="70.7" width="22.7" height="68.6" class="b" data-tip="1 pm: charging 7.2 GW"/><rect x="375.3" y="70.7" width="22.7" height="57.9" class="b" data-tip="2 pm: charging 6.1 GW"/><rect x="402.0" y="70.7" width="22.7" height="42.4" class="b" data-tip="3 pm: charging 4.5 GW"/><rect x="428.7" y="70.7" width="22.7" height="19.3" class="b" data-tip="4 pm: charging 2.0 GW"/><rect x="455.3" y="66.5" width="22.7" height="4.2" class="hi" data-tip="5 pm: discharging 0.4 GW"/><rect x="482.0" y="36.0" width="22.7" height="34.7" class="hi" data-tip="6 pm: discharging 3.6 GW"/><rect x="508.7" y="6.5" width="22.7" height="64.2" class="hi" data-tip="7 pm: discharging 6.8 GW"/><rect x="535.3" y="5.2" width="22.7" height="65.5" class="hi" data-tip="8 pm: discharging 6.9 GW"/><rect x="562.0" y="11.6" width="22.7" height="59.1" class="hi" data-tip="9 pm: discharging 6.2 GW"/><rect x="588.7" y="18.8" width="22.7" height="51.9" class="hi" data-tip="10 pm: discharging 5.5 GW"/><rect x="615.3" y="36.2" width="22.7" height="34.5" class="hi" data-tip="11 pm: discharging 3.6 GW"/><text x="13.3" y="166" text-anchor="middle" class="tk">midnight</text><text x="173.3" y="166" text-anchor="middle" class="tk">6 am</text><text x="333.3" y="166" text-anchor="middle" class="tk">noon</text><text x="493.3" y="166" text-anchor="middle" class="tk">6 pm</text></svg><figcaption><span data-tipout>Batteries charge on midday solar and discharge after sunset. Hover a bar.</span></figcaption></figure></div><div role="tabpanel" id="sd-p1" aria-labelledby="sd-t1" hidden data-meta="sql/analysis/06_net_peak_battery_share.sql"><pre class="code"><code>daily_net_peak <span class="hk">AS</span> (
+    <span class="hk">SELECT</span> *,
+           <span class="hk">ROW_NUMBER</span>() <span class="hk">OVER</span> (<span class="hk">PARTITION</span> <span class="hk">BY</span> region_code, day <span class="hk">ORDER</span> <span class="hk">BY</span> net_load_mwh <span class="hk">DESC</span>) <span class="hk">AS</span> rn,
+           <span class="hk">COUNT</span>(*)     <span class="hk">OVER</span> (<span class="hk">PARTITION</span> <span class="hk">BY</span> region_code, day)                            <span class="hk">AS</span> hours
+    <span class="hk">FROM</span> hourly
+)
+<span class="hk">SELECT</span> region_code,
+       day,
+       period_utc                                       <span class="hk">AS</span> net_peak_hour_utc,
+       <span class="hk">ROUND</span>(demand_mwh)                                <span class="hk">AS</span> demand_mwh,
+       <span class="hk">ROUND</span>(net_load_mwh)                              <span class="hk">AS</span> net_load_mwh,
+       <span class="hk">ROUND</span>(battery_mwh)                               <span class="hk">AS</span> battery_mwh,
+       <span class="hk">ROUND</span>(<span class="hn">100.0</span> * battery_mwh / <span class="hk">NULLIF</span>(net_load_mwh, <span class="hn">0</span>), <span class="hn">1</span>) <span class="hk">AS</span> battery_share_of_net_peak_pct
+<span class="hk">FROM</span> daily_net_peak
+<span class="hk">WHERE</span> rn = <span class="hn">1</span> <span class="hk">AND</span> hours &gt;= <span class="hn">22</span>                             <span class="hc">-- complete days only</span>
+<span class="hk">ORDER</span> <span class="hk">BY</span> region_code, day;</code></pre></div></div></div>
+        <dl class="nums">
+          <div><dt>California peak from batteries, last 30 days</dt><dd data-live="sd-share">25.4%</dd></div>
+          <div><dt>Hourly records validated</dt><dd data-live="sd-rows">587,104</dd></div>
+          <div><dt>Errors caught in source data</dt><dd>3</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="case" id="bmw">
+      <aside class="meta">
+        <p class="yr">May – Aug 2026</p>
+        <dl><dt>Role</dt><dd>Personal project</dd><dt>Built with</dt><dd>C, Python, ECU calibration</dd></dl>
+      </aside>
+      <div class="main">
+        <h2>BMW engine and electronics tuning</h2>
+        <p class="sub">Reprogramming a car&rsquo;s computers by hand</p>
+        <p>Reprogrammed the engine control unit in C and Python, tuning 125 calibration parameters across ignition timing,
+        fuel delivery, boost and throttle response. Reconfigured 6 electronic control modules to add real-time G-force
+        telemetry and radar displays to the car&rsquo;s own screens.</p>
+        
+        <dl class="nums">
+          <div><dt>Calibration parameters tuned</dt><dd>125</dd></div>
+          <div><dt>Engine performance</dt><dd>+17%</dd></div>
+          <div><dt>Control modules reconfigured</dt><dd>6</dd></div>
+        </dl>
+      </div>
+    </article>
+</main>
+<footer id="contact"><div class="wrap">
+  <div><p class="say"><a href="mailto:autkarsh@berkeley.edu">autkarsh@berkeley.edu</a></p><a href="https://www.linkedin.com/in/utkarsh-agarwal-4078601b1/">LinkedIn</a></div>
+  <p>Charts on this site are drawn from my own pipelines&rsquo; data: U.S. EIA, SEC EDGAR and Open-Meteo.</p>
+</div></footer>
+<script>
+(() => {
+  const root = document.documentElement, btn = document.getElementById('theme');
+  const dark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  const label = () => { btn.textContent = dark() ? 'Light' : 'Dark'; };
+  btn.onclick = () => { root.dataset.theme = dark() ? 'light' : 'dark'; try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {} label(); };
+  label();
+  const top = document.querySelector('header.top');
+  const onScroll = () => top.classList.toggle('scrolled', scrollY > 8);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  document.querySelectorAll('[data-win]').forEach(win => {
+    const tabs = [...win.querySelectorAll('[role=tab]')], meta = win.querySelector('.bar .meta');
+    const pick = (t, focus) => {
+      tabs.forEach(x => { const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
+        const p = document.getElementById(x.getAttribute('aria-controls')); p.hidden = !on; if (on && meta) meta.textContent = p.dataset.meta || ''; });
+      if (focus) t.focus();
+    };
+    tabs.forEach((t, i) => {
+      t.onclick = () => pick(t);
+      t.onkeydown = e => { const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (d) { e.preventDefault(); pick(tabs[(i + d + tabs.length) % tabs.length], true); } };
+    });
+  });
+  document.querySelectorAll('.ask').forEach(box => {
+    const bs = box.querySelectorAll('[data-asof]');
+    bs.forEach(b => b.onclick = () => {
+      bs.forEach(x => x.setAttribute('aria-checked', x === b));
+      box.querySelectorAll('[data-ans]').forEach(a => a.hidden = a.dataset.ans !== b.dataset.asof);
+    });
+  });
+  document.querySelectorAll('figure.live').forEach(fig => {
+    const out = fig.querySelector('[data-tipout]'); if (!out) return; const base = out.textContent;
+    fig.querySelectorAll('[data-tip]').forEach(r => { r.onmouseenter = () => out.textContent = r.dataset.tip; });
+    fig.querySelector('svg').onmouseleave = () => out.textContent = base;
+  });
+
+  const $$ = k => document.querySelector(`[data-live="${k}"]`);
+  const ago = s => {
+    const t = Date.parse(String(s).replace(' UTC', 'Z').replace(' ', 'T')); if (!t) return null;
+    const h = (Date.now() - t) / 36e5;
+    return { h, text: h < 1 ? 'updated under an hour ago' : h < 48 ? `updated ${Math.round(h)} hours ago` : `updated ${Math.round(h / 24)} days ago` };
+  };
+  const mark = (who, when) => { const a = when && ago(when), w = $$(who + '-when'), d = $$(who + '-dot'); if (!a || !w) return; w.textContent = a.text; d && d.classList.toggle('ok', a.h < 36); };
+  const n = x => Number(x).toLocaleString('en-US', { maximumFractionDigits: 0 });
+  const set = (k, v) => { const e = $$(k); if (e) e.textContent = v; };
+  if ($$('gl-when')) {
+    fetch('/gigawatt-ledger/data/manifest.json', { cache: 'no-store' }).then(r => r.ok && r.json()).then(m => m && mark('gl', m.built_at)).catch(() => {});
+    fetch('/gigawatt-ledger/data/history.csv', { cache: 'no-store' }).then(r => r.ok && r.text()).then(t => {
+      if (!t) return; const v = {}; t.trim().split('\n').slice(1).forEach(l => { const [, k, x] = l.split(','); v[k] = x; });
+      if (v.grid_hours && v.sec_data_points) set('gl-what', `${n(v.grid_hours)} grid hours, ${n(v.sec_data_points)} SEC data points`);
+    }).catch(() => {});
+  }
+  if ($$('sd-when') || $$('sd-rows')) fetch('/sundown/status.json', { cache: 'no-store' }).then(r => r.ok && r.json()).then(s => {
+    if (!s) return; mark('sd', s.built_at);
+    if (s.rows) { set('sd-what', `${n(s.rows)} hourly records, ${s.grids || 7} grids`); set('sd-rows', n(s.rows)); }
+    if (s.ciso_battery_share_30d != null) set('sd-share', s.ciso_battery_share_30d + '%');
+  }).catch(() => {});
+})();
+</script>
+</body>
+</html>
