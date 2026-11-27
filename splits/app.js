@@ -1,5 +1,5 @@
-import { DISTANCES, byId, WORLD_RECORDS, vdot, predict, riegel, trainingPaces, fasterThan, timeAt, fmt, parseTime } from './model.js';
-import { planGoal, checkpoints, phases, raceDay } from './plan.js';
+import { DISTANCES, byId, WORLD_RECORDS, vdot, predict, riegel, trainingPaces, fasterThan, timeAt, fmt, parseTime } from './model.js?v=64c777b10e';
+import { planGoal, checkpoints, phases, raceDay } from './plan.js?v=64c777b10e';
 
 const $ = s => document.querySelector(s);
 const el = (tag, attrs = {}, html = '') => { const e = document.createElement(tag); Object.entries(attrs).forEach(([k, v]) => e.setAttribute(k, v)); e.innerHTML = html; return e; };
@@ -448,7 +448,7 @@ function wire() {
   addEventListener('hashchange', () => { if (fromHash()) { renderBib(); update(); } });
 }
 
-fetch('races.json').then(r => r.json()).then(data => {
+fetch('races.json?v=64c777b10e').then(r => r.json()).then(data => {
   D = data;
   if (!fromHash()) { const p = PRESETS.me; S.prs = p.prs.map(x => [...x]); S.sex = p.sex; }
   wire(); renderBib(); showTab(S.tab); update();
