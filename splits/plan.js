@@ -1,5 +1,5 @@
 // Race plan: a goal time from your PRs and race-day conditions, then a written plan for the race itself.
-import { vdot, predict, heatSlowdown, splits, fmt } from './model.js?v=64c777b10e';
+import { vdot, predict, heatSlowdown, splits, fmt } from './model.js?v=19a641e723';
 
 const KM = 1000, MI = 1609.344;
 export const COURSE = { flat: 0, rolling: 0.01, hilly: 0.03 };
