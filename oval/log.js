@@ -1,6 +1,6 @@
 // The log: a feed of runs, a detail page for each run (route, pace, elevation, splits, best efforts),
 // a calendar, records found across every run, and progress charts. Everything is stored in this browser.
-import { EFFORTS } from './importer.js?v=ca55224080';
+import { EFFORTS } from './importer.js?v=59ef151d97';
 
 const TYPE = { easy: 'Easy run', long: 'Long run', quality: 'Workout', race: 'Race', cross: 'Cross-training' };
 const FEEL = { great: 'Great', good: 'Good', ok: 'OK', tough: 'Tough', pain: 'Pain' };
