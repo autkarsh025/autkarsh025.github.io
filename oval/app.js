@@ -1,6 +1,6 @@
-import { DISTANCES, byId, WORLD_RECORDS, vdot, predict, riegel, trainingPaces, fasterThan, timeAt, heatSlowdown, fmt, parseTime } from './model.js?v=b46b393af4';
-import { planGoal, checkpoints, phases, raceDay } from './plan.js?v=b46b393af4';
-import { weekPlan, seasonPlan, ROUTINES, weekKey } from './training.js?v=b46b393af4';
+import { DISTANCES, byId, WORLD_RECORDS, vdot, predict, riegel, trainingPaces, fasterThan, timeAt, heatSlowdown, fmt, parseTime } from './model.js?v=64e8053001';
+import { planGoal, checkpoints, phases, raceDay } from './plan.js?v=64e8053001';
+import { weekPlan, seasonPlan, ROUTINES, weekKey } from './training.js?v=64e8053001';
 
 const $ = s => document.querySelector(s);
 const el = (tag, attrs = {}, html = '') => { const e = document.createElement(tag); Object.entries(attrs).forEach(([k, v]) => e.setAttribute(k, v)); e.innerHTML = html; return e; };
@@ -718,16 +718,13 @@ function wire() {
   $('#goal').oninput = () => update();
   $('#conv-v').oninput = $('#conv-u').onchange = () => renderConverter();
   $('#print').onclick = () => window.print();
-  const root = document.documentElement, th = $('#theme');
-  const night = () => root.dataset.theme ? root.dataset.theme === 'night' : matchMedia('(prefers-color-scheme: dark)').matches;
-  const lab = () => { th.textContent = night() ? 'Day mode' : 'Night mode'; };
-  th.onclick = () => { root.dataset.theme = night() ? 'day' : 'night'; try { localStorage.setItem('splits-theme', root.dataset.theme); } catch {} lab(); drawTrack(); };
-  lab();
+  try { localStorage.removeItem('splits-theme'); } catch {}  // the site follows the device's light or dark setting
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => drawTrack());
   new ResizeObserver(() => drawTrack()).observe($('#track').parentElement);
   addEventListener('hashchange', () => { if (fromHash()) { renderBib(); update(); } });
 }
 
-fetch('races.json?v=b46b393af4').then(r => r.json()).then(data => {
+fetch('races.json?v=64e8053001').then(r => r.json()).then(data => {
   D = data;
   if (!fromHash()) { S.prs = [['5k', '']]; S.sex = 'all'; }
   S.friends = loadFriends(); S.ans = store.get('oval-answers', null); S.draft = S.ans ? { ...S.ans } : {}; S.qi = 0; S.quiz = false; S.feel = null;
