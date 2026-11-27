@@ -6,7 +6,7 @@
 //   repetitions the lesser of 8 km or 5%; marathon pace the lesser of 18 miles or 20% (Daniels).
 //   Sessions here sit below those caps (threshold 8%, intervals 7%, marathon pace 12%) so the week stays near 80% easy.
 // - Easy runs at least 30 minutes where the volume allows (Daniels).
-import { trainingPaces, fmt } from './model.js?v=f3e56c5021';
+import { trainingPaces, fmt } from './model.js?v=24205cbea7';
 
 const KM = 1000, MI = 1609.344;
 export const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
