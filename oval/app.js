@@ -1,7 +1,7 @@
-import { DISTANCES, byId, WORLD_RECORDS, vdot, predict, riegel, trainingPaces, fasterThan, timeAt, heatSlowdown, fmt, parseTime } from './model.js?v=95639e3b6e';
-import { planGoal, checkpoints, phases, raceDay } from './plan.js?v=95639e3b6e';
-import { weekPlan, seasonPlan, ROUTINES, weekKey, loadRatio, bestEffort, sweatRate, fuelPlan } from './training.js?v=95639e3b6e';
-import { parseTrack, parseStrava, isDuplicate } from './importer.js?v=95639e3b6e';
+import { DISTANCES, byId, WORLD_RECORDS, vdot, predict, riegel, trainingPaces, fasterThan, timeAt, heatSlowdown, fmt, parseTime } from './model.js?v=e987f5bbcf';
+import { planGoal, checkpoints, phases, raceDay } from './plan.js?v=e987f5bbcf';
+import { weekPlan, seasonPlan, ROUTINES, weekKey, loadRatio, bestEffort, sweatRate, fuelPlan } from './training.js?v=e987f5bbcf';
+import { parseTrack, parseStrava, isDuplicate } from './importer.js?v=e987f5bbcf';
 
 const $ = s => document.querySelector(s);
 const el = (tag, attrs = {}, html = '') => { const e = document.createElement(tag); Object.entries(attrs).forEach(([k, v]) => e.setAttribute(k, v)); e.innerHTML = html; return e; };
@@ -634,7 +634,7 @@ function autoTime(el) {
   el.value = dig.length > 4 ? `${dig.slice(0, -4)}:${dig.slice(-4, -2)}:${dig.slice(-2)}` : dig.length > 2 ? `${dig.slice(0, -2)}:${dig.slice(-2)}` : dig;
 }
 // capture phase, so the formatted value is what every other handler sees
-document.addEventListener('input', e => { if (e.target.matches('input[data-time]')) autoTime(e.target); }, true);
+document.addEventListener('input', e => { if (e.target.matches('input[data-time]') || (e.target.id === 'conv-v' && /^(mi|km)$/.test(document.getElementById('conv-u').value))) autoTime(e.target); }, true);
 const isReady = () => S.submitted && !!analyse();
 function selectSub(btn) {
   const bar = btn.parentElement;
@@ -803,7 +803,7 @@ function wire() {
   addEventListener('hashchange', () => { if (fromHash()) { renderBib(); update(); showTab(S.tab); } });
 }
 
-fetch('races.json?v=95639e3b6e').then(r => r.json()).then(data => {
+fetch('races.json?v=e987f5bbcf').then(r => r.json()).then(data => {
   D = data;
   if (!fromHash()) { S.prs = [['5k', '']]; S.sex = 'all'; }
   S.friends = loadFriends(); S.ans = store.get('oval-answers', null); S.draft = S.ans ? { ...S.ans } : {}; S.qi = 0; S.quiz = false; S.feel = null;
